@@ -3,7 +3,7 @@ Phalcon1.3.0-vagrant
 
 This virtual machine has the following programs installed:
 * Phalcon 2.0.0 BETA3
-* Phalcon dev-tools 1.3.3 BETA3
+* Phalcon dev-tools 2.0.0 BETA3
 * Apache 2.4.7
 * Git 1.9.1
 
