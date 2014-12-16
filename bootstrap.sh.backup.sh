@@ -26,25 +26,14 @@ sudo apt-get install -y php5;
 sudo apt-get install -y libapache2-mod-php5;
 sudo apt-get install -y php5-mcrypt;
 
-# install zephir
-sudo apt-get install gcc make re2c libpcre3-dev;
+# install phalcon
+sudo -i
 
-git clone https://github.com/json-c/json-c.git;
-cd json-c;
-sh autogen.sh;
-./configure;
-make && sudo make install
-cd ..
+git clone --depth=1 git://github.com/phalcon/cphalcon.git;
 
-git clone https://github.com/phalcon/zephir;
-cd zephir;
-./install -c;
-cd ..
- 
-git clone http://github.com/phalcon/cphalcon;
-cd cphalcon;
-git checkout 2.0.0;
-zephir build;
+cd ./cphalcon/build/;
+
+sudo ./install;
 
 echo 'extension=phalcon.so' | sudo tee -a /etc/php5/mods-available/phalcon.ini
 cd /etc/php5/mods-available;
@@ -87,7 +76,12 @@ sudo apt-get install -y phpmyadmin=4:4.0.10-1;
 
 sudo php5enmod mcrypt;
 
+sudo cp -R /vagrant/config/projects/* /var/www/;
+
+sudo cp -R /vagrant/config/apache2/ /etc/ && sudo chown -R root:root /etc/apache2/;
+
+sudo service apache2 restart;
+
 # sudo cp -R /etc/apache2/ /vagrant/config/
 # sudo cp -R /etc/php5/apache2/php.ini /vagrant/config/
-
 
